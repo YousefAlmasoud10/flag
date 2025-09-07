@@ -1,0 +1,5 @@
+transactions:
+  - amount: 1
+    country: US
+    currency: FL
+    op: BUY
