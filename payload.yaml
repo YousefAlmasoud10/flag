@@ -1,8 +1,4 @@
-$txs = [
-  [
-    "amount" => 1,
-    "country" => "US",
-    "currency" => "FL",
-    "op" => "BUY"
-  ]
-];
+- amount: 1
+  country: US
+  currency: FL
+  op: BUY
