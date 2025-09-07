@@ -1,4 +1,8 @@
-- amount: 1
-  country: US
-  currency: FL
-  op: BUY
+$txs = [
+  [
+    "amount" => 1,
+    "country" => "US",
+    "currency" => "FL",
+    "op" => "BUY"
+  ]
+];
